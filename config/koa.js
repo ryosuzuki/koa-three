@@ -16,9 +16,9 @@ module.exports = function (app) {
   app.use(responseTime());
 
   app.use(compress());
-  app.use(less('../app/assets'));
-  app.use(serve('../bower_components'));
-  app.use(serve('../app/assets'));
+  app.use(less('./app/assets'));
+  app.use(serve('./bower_components'));
+  app.use(serve('./app/assets'));
 
   // app.use(staticCache('../public', {
   //   maxAge: 365 * 24 * 60 * 60
@@ -28,7 +28,7 @@ module.exports = function (app) {
   app.use(session(app));
   app.use(logger());
   app.use( function *(next) {
-    this.render = views('../app/views', {
+    this.render = views('./app/views', {
       map: { html: 'swig' },
       locals: this.locals
     });

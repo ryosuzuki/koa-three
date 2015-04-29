@@ -1,5 +1,6 @@
 
 var Post = require('../models/post.js');
+var parse = require('co-body');
 
 
 exports.index = function *() {
@@ -36,17 +37,23 @@ exports.edit = function *() {
 };
 
 exports.create = function *() {
+  var body = yield parse(this);
+  var post = new Post(body);
+  yield post.save()
+  this.redirect('/posts/'+post._id);
+};
+
+exports.update = function *() {
+  var body = yield parse(this);
+  var post = yield Post.findOne(body._id).exec();
+  yield post.update(body);
+  this.redirect('/posts/'+post._id);
+};
+
+exports.socket = function *() {
   var data = this.data[0];
   var post = new Problem(data)
   yield post.save();
   this.emit('res:post:create', post);
 }
-
-exports.update = function *() {
-  var data = this.data[0];
-  var post = yield Problem.findOne({_id: data.id}).exec();
-  yield post.save();
-  this.emit('res:post:update', post);
-}
-
 

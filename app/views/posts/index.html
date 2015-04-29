@@ -6,14 +6,30 @@
 
 {% block content %}
   {% for post in posts %}
-    {{ post }}
+    <h2>
+      <a href="/posts/{{ post.id }}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p>
+      {{ post.content }}
+    </p>
   {% endfor %}
 
   <br>
+
   <div>
     <h5>
       <a href="/posts/new">Create New</a>
     </h5>
   </div>
+
+  <br>
+
+  <h3>Debug</h3>
+  <pre>
+    {{ JSON.stringify(posts) }}
+  </pre>
+
 {% endblock %}
 
