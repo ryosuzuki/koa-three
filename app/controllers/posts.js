@@ -1,6 +1,9 @@
 
+var Post = require('../models/post.js');
+
+
 exports.index = function *() {
-  var posts = ['hoge', 'fuga', 'foo'];
+  var posts = yield Post.find().exec();
   this.body = yield this.render('posts/index', {
     title: 'Posts',
     posts: posts
@@ -10,13 +13,13 @@ exports.index = function *() {
 exports.new = function *() {
   this.body = yield this.render('posts/new', {
     title: 'New Post',
-    // post: new Lesson({})
+    post: new Post({})
   });
 };
 
 exports.show = function *() {
   var id = this.params.id;
-  var post = ['hoge', 'fuga', 'foo'][id];
+  var post = yield Post.findOne({ _id: id }).exec();
   this.body = yield this.render('posts/show', {
     title: 'Post',
     post: post
@@ -24,25 +27,25 @@ exports.show = function *() {
 }
 
 exports.edit = function *() {
+  var id = this.params.id;
+  var post = yield Post.findOne({ _id: id }).exec();
   this.body = yield this.render('posts/edit', {
     title: 'Edit Post',
-    // post: new Lesson({})
+    post: post
   });
 };
 
 exports.create = function *() {
   var data = this.data[0];
-  var post = 'hello create';
-  // var post = new Problem(post)
-  // yield post.save();
+  var post = new Problem(data)
+  yield post.save();
   this.emit('res:post:create', post);
 }
 
 exports.update = function *() {
   var data = this.data[0];
-  var post = 'hello update';
-  // var post = new Problem.findOne({_id: data._id})
-  // yield post.save();
+  var post = yield Problem.findOne({_id: data.id}).exec();
+  yield post.save();
   this.emit('res:post:update', post);
 }
 
