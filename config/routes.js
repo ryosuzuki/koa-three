@@ -1,4 +1,5 @@
 
+var posts = require('../app/controllers/posts')
 
 module.exports = function (app) {
 
@@ -10,6 +11,5 @@ module.exports = function (app) {
   app.get('/', posts.index);
   app.get('/posts/:id', posts.show);
   app.get('/posts/:id/edit', posts.edit);
-  app.post('/posts/:id', posts.create);
 
 }

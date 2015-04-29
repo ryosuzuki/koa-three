@@ -10,7 +10,6 @@ var compress = require('koa-compress');
 var less = require('koa-less');
 
 var swig = require('swig');
-var config = require('config');
 
 module.exports = function (app) {
 
@@ -21,9 +20,9 @@ module.exports = function (app) {
   app.use(serve('../bower_components'));
   app.use(serve('../app/assets'));
 
-  app.use(staticCache('../public', {
-    maxAge: 365 * 24 * 60 * 60
-  }));
+  // app.use(staticCache('../public', {
+  //   maxAge: 365 * 24 * 60 * 60
+  // }));
 
   app.keys = ['session']
   app.use(session(app));
