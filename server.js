@@ -12,7 +12,6 @@ require('./config/routes')(app);
 require('./config/socket')(app);
 
 console.log('Express app started on port ' + port);
-console.log(config);
 
 app.listen(port);
 module.exports = app;
