@@ -1,11 +1,16 @@
 {
   "name": "piedmont",
   "version": "0.0.1",
-  "private": true,
+  "description": "Interactive 3D modeling tool built with JavaScript",
+  "authors": [
+    "Ryo Suzuki <ryosuzk@gmail.com>",
+    "Shohei Aoki <shoaok@gmail.com>"
+  ],
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
+    "bower": "^1.4.1",
     "co": "^4.5.1",
     "co-body": "^1.1.0",
     "co-views": "^0.3.0",
@@ -40,5 +45,7 @@
     "gulp-nodemon": "^1.0.5",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.1.0"
-  }
+  },
+  "private": true,
+  "license": "MIT",
 }
