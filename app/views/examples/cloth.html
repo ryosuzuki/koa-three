@@ -1,0 +1,23 @@
+{% extends '../layouts/default.html' %}
+
+{% block main %}
+  <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+
+  <div id="info">Simple Cloth Simulation<br/>
+    Verlet integration with Constrains relaxation<br/>
+    Toggle: <a onclick="rotate = !rotate;">Camera</a> |
+    <a onclick="wind = !wind;">Wind</a> |
+    <a onclick="sphere.visible = !sphere.visible;">Ball</a> |
+    <a onclick="togglePins();">Pins</a>
+  </div>
+
+{% endblock %}
+
+{% block script %}
+  <script src="/js/examples/cloth.js" defer></script>
+{% endblock %}}
+
+
