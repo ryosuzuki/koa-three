@@ -1,0 +1,23 @@
+{% extends '../layouts/default.html' %}
+
+{% block main %}
+  <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>
+    <a href="/examples/{{ post.id }}">
+    </a>
+  </h2>
+
+  <br>
+
+  <h3>Example</h3>
+
+{% endblock %}
+
+{% block script %}
+  <script src="/js/examples/index.js" defer></script>
+{% endblock %}}
+
+
